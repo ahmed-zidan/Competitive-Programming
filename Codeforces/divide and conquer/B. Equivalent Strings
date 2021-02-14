@@ -1,0 +1,39 @@
+    #include<iostream>
+    #include<iostream>
+    using namespace std;
+     
+     
+     
+    string reSort(string s){
+    if(s.size() & 1)
+        return s;
+     
+     
+    string s1 = reSort(s.substr(0,s.size()/2));
+    string s2 = reSort(s.substr(s.size()/2,s.size()));
+     
+    return min(s1+s2,s2+s1);
+     
+     
+    }
+     
+     
+    bool areEqual(string s1,string s2){
+     
+    return (reSort(s1) ==reSort(s2));
+    }
+     
+    int main(){
+     
+    string s1,s2;
+    cin>>s1>>s2;
+     
+    if(areEqual(s1,s2))
+        cout<<"YES";
+    else cout<<"NO";
+     
+     
+     
+     
+     
+    }
