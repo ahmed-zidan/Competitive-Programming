@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+
+int ret[1000001] = {-1};
+bool fnd(int n){
+
+if(n < 0)
+    return false;
+if(n == 0)
+    return true;
+
+  if(ret[n] != -1)
+        return ret[n];
+
+
+if(fnd(n-2020) || fnd(n-2021))
+    return ret[n] = 1;
+
+else return ret[n] = 0;
+
+}
+
+int main(){
+
+int t;
+for(int i =0;i<1000001;i++)ret[i] = -1;
+cin>>t;
+while(t--){
+int n;
+cin>>n;
+
+    if(fnd(n))
+        cout<<"YES"<<endl;
+    else cout<<"NO"<<endl;
+
+
+
+}
+
+
+
+
+}
