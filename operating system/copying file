@@ -1,0 +1,42 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int main(){
+
+string file1 = "file1.txt";
+string file2 = "file2.txt";
+
+
+ofstream out(file1,ios::out);
+
+string line;
+
+while(out){
+
+getline(cin,line);
+if(line == "exit")
+    break;
+out<<line<<endl;
+
+}
+
+out.close();
+
+
+ifstream in(file1);
+out.open(file2,ios::app);
+
+
+while(in){
+    getline(in,line);
+
+    out<<line<<endl;
+
+}
+
+out.close();
+in.close();
+
+}
