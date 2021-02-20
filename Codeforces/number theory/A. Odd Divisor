@@ -1,0 +1,37 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+
+int main(){
+
+int n;
+cin>>n;
+
+while(n--){
+
+    long long x;
+    int y = 0;
+    cin>>x;
+
+    if(x%2 == 1){
+        cout<<"yes"<<endl;
+        continue;
+    }
+
+    x = x/2;
+    while(x > 1){
+        if(x%2 == 1){
+                y =1;
+            break;
+        }
+        x = x/2;
+    }
+
+    if(y)cout<<"yes"<<endl;
+    else cout<<"no"<<endl;
+}
+
+
+
+}
