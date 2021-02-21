@@ -1,0 +1,32 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+int main(){
+
+
+int t;
+cin>>t;
+while(t--){
+
+int n;
+long long x;
+cin>>n>>x;
+
+long long min = 0;
+long long max = 0;
+long long y;
+for(int i =0;i<n;i++){
+    cin>>y;
+
+    max += ceil(y*1.0/x);
+    min+=y;
+}
+
+
+min = ceil(min*1.0/x);
+cout<<min<<" "<<max<<endl;
+
+}
+
+
+}
