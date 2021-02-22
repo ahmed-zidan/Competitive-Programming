@@ -1,0 +1,43 @@
+    #include<iostream>
+    using namespace std;
+     
+     
+    long long cut(int w,int h){
+     
+    if(w % 2 == 1 && h % 2 == 1)
+        return 1;
+     
+    long long sh = 0;
+    if(h % 2 == 0){
+     
+        sh = cut(w,h/2);
+     
+    }
+    else sh = cut(w/2,h);
+     
+    return sh * 2;
+     
+    }
+     
+    int main(){
+     
+    int t;
+    cin>>t;
+    while(t--){
+     
+        int w,h;
+        cin>>w>>h;
+         long long n;
+        cin>>n;
+        long long Sheets = cut(w,h);
+     
+            if(Sheets >= n)
+            cout<<"yes"<<endl;
+        else cout<<"no"<<endl;
+     
+     
+    }
+     
+     
+    }
+
