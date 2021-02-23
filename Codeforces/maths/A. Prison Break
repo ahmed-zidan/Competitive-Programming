@@ -1,0 +1,39 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+
+
+
+int main(){
+
+int t;
+cin>>t;
+while(t--){
+
+long long n,m,r,c;
+cin>>n>>m>>r>>c;
+
+long long sum = 0;
+if(r-1 > n-r)
+    sum = r-1;
+else sum = n-r;
+
+if(c-1 > m-c)
+    sum += c-1;
+else sum += m-c;
+
+
+cout<<sum<<endl;
+
+
+
+
+}
+
+
+
+
+
+}
