@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+
+int n,c0,c1,h;
+string s;
+
+int minCost(){
+
+    int m = 0;
+    for(int i =0;i<n;i++){
+
+        if(s[i] == '0'){
+            m +=min(c0,h+c1);
+        }else{
+            m += min(c1,h+c0);
+        }
+
+    }
+
+return m;
+
+}
+
+int main(){
+
+int t;
+cin>>t;
+while(t--){
+
+    cin>>n>>c0>>c1>>h>>s;
+
+    cout<<minCost()<<endl;
+
+}
+
+
+
+}
