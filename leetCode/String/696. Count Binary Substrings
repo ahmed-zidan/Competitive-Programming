@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int countBinarySubstrings(string s) {
+        
+        int i =0,j = 0;
+        
+        int sum =0 ;
+        while(j<s.size() && i<s.size()){
+            
+            
+            
+            int o = 0;
+            int z = 0;
+            
+            while(i<s.size()&&s[i] == s[i+1])o++,i++;
+            
+            o++;
+            j =i+1;
+            
+            if(j<s.size())
+                z++;
+            
+            while(j<s.size()&&s[j] == s[j+1])z++,j++;
+            
+            
+            sum += min(o,z);
+            i++,j++;
+            
+            
+            
+        }
+        
+        return sum;
+        
+    }
+};
