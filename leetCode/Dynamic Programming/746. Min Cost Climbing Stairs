@@ -1,0 +1,39 @@
+class Solution {
+
+    
+    int vis[1001] = {0};
+    public:
+    
+    int jumb(const vector<int>& cost,int step){
+        
+        
+        
+        if(step >= cost.size())
+            return 0;
+        
+        if(vis[step])
+            return vis[step];
+        
+        int one = 0,two = 0;
+        if(step < cost.size())
+        one = jumb(cost,step+1) + cost[step];
+        
+        if(step+1<cost.size())
+        two = jumb(cost,step+2) + cost[step+1];
+        
+        return vis[step] = min(one,two);
+        
+        
+    }
+    
+    
+    int minCostClimbingStairs(vector<int>& cost) {
+     
+        
+        return jumb(cost,0);
+        
+        
+        
+        
+    }
+};
