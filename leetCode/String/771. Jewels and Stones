@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int numJewelsInStones(string jewels, string stones) {
+        
+        int arr[100] = {0};
+        
+        for(auto i : jewels)
+            arr[i-'A'] = 1;
+        
+        int s = 0;
+        for(auto i : stones)
+            s += arr[i-'A'];
+        
+        return s;
+        
+    }
+};
