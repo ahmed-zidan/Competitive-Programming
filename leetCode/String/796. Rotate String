@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+       
+        if(s.size()!=goal.size())
+            return false;
+        
+        
+        int i;
+        for(i =0;i<goal.size();i++){
+        
+            if(goal[i] == s[0] && goal[goal.size()-1] == s[s.size()-i-1] && goal[0] == s[(s.size()-i-1)+1])
+                break;
+        }
+        
+        int k = 0;
+        
+        
+        
+        
+        
+        for(int j = i;j<goal.size();j++,k++){
+        
+            if(goal[j] != s[k])
+                return false;
+            
+        }
+        
+        for(int m = 0;m<i;m++,k++){
+            if(goal[m]!=s[k])
+                return false;
+            
+        }
+        return true;
+        
+    }
+};
