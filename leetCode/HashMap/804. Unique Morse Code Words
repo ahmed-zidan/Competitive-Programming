@@ -1,0 +1,36 @@
+class Solution {
+public:
+    
+    string git(string s,string *t){
+        
+        string m = "";
+        for(int i =0;i<s.size();i++){
+            
+            m += t[s[i]-'a'];
+            
+            
+        }
+        
+        return m;
+        
+    }
+    
+    
+    int uniqueMorseRepresentations(vector<string>& words) {
+        
+        string s[] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        
+        map<string,bool>m;
+        int count =0;
+        for(auto i : words){
+            string k = git(i,s);
+            if(!m[k])
+                 count++;
+            
+           m[k] = 1;
+        }
+        
+        
+        return count;
+    }
+};
