@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> numberOfLines(vector<int>& widths, string s) {
+        
+        vector<int>res(2,0);
+        
+        int w = 0;
+        
+        for(auto i : s){
+            int w1 = widths[i-'a'];
+            if(w+w1 > 100){
+                res[0]++,w = w1;
+                cout<<i<<endl;
+            }
+            else w += w1;
+        }
+        
+        res[0]++;
+        res[1] = w;
+        return res;
+        
+    }
+};
