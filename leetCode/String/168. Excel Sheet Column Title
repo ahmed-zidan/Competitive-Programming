@@ -1,0 +1,31 @@
+class Solution {
+public:
+    string convertToTitle(int columnNumber) {
+        
+        char ch[] = {'Z','A', 'B', 'C' ,'D', 'E', 'F' ,'G' ,'H' ,'I','J','K' 
+            ,'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U','V','W', 'X', 'Y', 'Z'};
+        string s = "";
+        int x= 0;
+        
+        while(columnNumber > 26){
+        
+            int i = columnNumber%26;
+            
+            s=ch[i]+s;
+
+            
+            
+            columnNumber -= i;
+            columnNumber /= 26;
+            
+            if(i == 0)
+                columnNumber -=1;
+            
+        }
+        s=ch[columnNumber]+s;
+        
+        return s;
+        
+        
+    }
+};
