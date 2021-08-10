@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int robotSim(vector<int>& commands, vector<vector<int>>& obstacles) {
+        
+        map<pair<int,int>,bool>obs;
+        for(auto i : obstacles){
+            obs[{i[0],i[1]}] = 1;
+        }
+        
+        int res = 0;
+        int x =0,y = 0;
+        
+        int *m = &y;
+        int n = 1,dir = 0;
+        for(auto i : commands){
+            if(i == -1)
+               dir++,dir = (dir%4);
+            else if(i == -2)
+               dir+=3,dir = (dir%4);
+            
+            else{
+            
+                if(dir < 2)
+                    n =1;
+                else n = -1;
+                if(dir == 0 || dir == 2)
+                    m = &y;
+                else m = &x;
+                
+                
+                while(i-->0){
+                    //cout<<x<<"   "<<y<<endl;
+                *m +=n;
+                if(obs[{x,y}]){*m = *m - n;break;};
+                    
+                }
+            }
+            
+            res = max(res,x*x+y*y);
+        }
+        
+        return res;
+        
+    }
+};
