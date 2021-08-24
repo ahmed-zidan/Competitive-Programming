@@ -1,0 +1,60 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+
+   
+    public:
+    bool isCousins(TreeNode* root, int x, int y) {
+   
+        queue<TreeNode*>q;
+        
+        q.push(root);
+        
+        while(!q.empty()){
+            int sz = q.size();
+            bool h1 = false;
+            bool h2 = false;
+            while(sz--){
+                
+                TreeNode*t = q.front();
+                q.pop();
+                if(t->val == x)h1 =1;
+                if(t->val == y)h2 = 1;
+                if(t->left && t->right){
+                    if(t->left->val == x && t->right->val == y)
+                        return false;
+                    if(t->left->val == y && t->right->val == x)
+                        return false;
+                    
+                    
+                }
+                    
+                if(t->left)
+                    q.push(t->left);
+                if(t->right)
+                    q.push(t->right);
+            
+                if(h1 && h2)
+                    return true;
+                
+                
+            }
+            
+            
+            
+        }
+        
+        return false;
+        
+        
+    }
+};
