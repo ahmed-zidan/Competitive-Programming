@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int repeatedNTimes(vector<int>& nums) {
+     
+        int v[10001] = {0};
+        for(auto i : nums){
+            if(v[i] > 0)
+                return i;
+            v[i]++;
+        }
+        return 0;
+    }
+};
