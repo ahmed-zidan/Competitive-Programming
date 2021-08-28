@@ -1,0 +1,59 @@
+class Solution {
+public:
+    
+    
+    static bool compareP(pair<string,string> p1, pair<string,string>p2){
+        
+        if(p1.second == p2.second){
+            return p1.first < p2.first;
+        }
+        else
+            return p1.second < p2.second;
+        
+    }
+    
+    vector<string> reorderLogFiles(vector<string>& logs) {
+        
+        vector<pair<string,string>>let;
+        vector<string>dig;
+        
+        for(string s : logs){
+            
+            if(isalpha(s[s.size()-1])){
+                
+                string id = "";
+                string l ="";
+                int i =0;
+                while(s[i] != ' ')
+                    id+=s[i],i++;
+                
+                i++;
+                while(i < s.size())
+                    l+=s[i++];
+                
+                let.push_back({id,l});
+                
+            }else{
+                dig.push_back(s);
+            }
+            
+        }
+        
+        
+        sort(let.begin(),let.end(),compareP);
+        //sort(dig.begin(),dig.end());
+        
+        
+        vector<string>res;
+        for(auto i : let){
+            
+            res.push_back(i.first + " "+i.second);
+            
+        }
+        for(auto i : dig){
+          res.push_back(i);  
+        }
+             
+        return res;
+    }
+};
