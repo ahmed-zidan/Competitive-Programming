@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        set<string>s;
+        
+        for(auto i : emails){
+            
+            string e = "";
+            int j ;
+            for(j =0;j<i.size();j++){
+                
+                if(i[j] == '@'){
+                    while(j < i.size())e += i[j++];
+                    break;
+                }
+                
+                
+                else if(i[j] == '+'){
+                    j = i.size()-1;
+                    string k = "";
+                    while(i[j] != '@') k = i[j--]+k;
+                    k = i[j]+k;
+                    e += k;
+                break;
+                }
+                
+                else if(i[j] == '.')
+                    continue;
+                
+                
+                e+=i[j];
+                
+            }
+            
+            s.insert(e);
+            
+        }
+            
+        return s.size();
+    }
+};
