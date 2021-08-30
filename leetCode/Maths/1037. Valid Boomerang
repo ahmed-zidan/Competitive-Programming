@@ -1,0 +1,35 @@
+class Solution {
+public:
+    
+    
+    double slope(vector<int>a1 , vector<int>a2){
+        
+        
+        if(a1[0] == a2[0])
+            return 200;
+        
+        
+        return (a1[1]-a2[1])*1.0/(a1[0] - a2[0]);
+        
+    }
+    
+    bool isBoomerang(vector<vector<int>>& points) {
+        
+        
+        if(points[0][0] == points[1][0] && points[0][1] == points[1][1] || 
+          points[0][0] == points[2][0] && points[0][1] == points[2][1] ||
+            points[1][0] == points[2][0] && points[1][1] == points[2][1])
+            return false;
+        
+        
+        if(slope(points[0],points[1]) == slope(points[1],points[2])){
+            return false;
+        }
+        
+        else return true;
+        
+        
+        
+        
+    }
+};
