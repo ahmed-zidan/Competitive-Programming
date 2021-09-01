@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int smallestRangeI(vector<int>& nums, int k) {
+        
+        //get min and max numbers only
+        int m = INT_MAX,l = INT_MIN;
+        
+        for(auto i : nums){
+            m = min(m,i);
+            l = max(l,i);
+        }
+        
+        m = m+k;
+        
+        if(l - k < m)
+            return 0;
+        return  l - k - m;
+        
+        
+    }
+};
