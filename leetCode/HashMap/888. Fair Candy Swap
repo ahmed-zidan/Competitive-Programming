@@ -1,0 +1,48 @@
+class Solution {
+public:
+    
+    
+    int sum(vector<int>v){
+        
+        int s = 0;
+        
+        for(auto i : v)
+            s +=i;
+        
+        
+        return s;
+        
+    }
+    
+    vector<int> fairCandySwap(vector<int>& aliceSizes, vector<int>& bobSizes) {
+        
+        int arr[999999] = {0};
+        
+        
+        int s1 = sum(aliceSizes);
+        int s2 = sum(bobSizes);
+        
+        int s = (s1+s2)/2;
+        
+        cout<<s<<endl;
+        cout<<s1<<"   "<<s2<<endl;
+        for(auto i : bobSizes)
+            arr[i] = 1;
+        
+        
+        for(auto i : aliceSizes){
+            
+            int k = s1-i;
+            if(s-k >= 0 && arr[s-k])
+                if(s2 - (s-k) + i == s)
+                return {i,s-k};
+            else if(k-s >= 0 && arr[k-s]){
+                if(s2 - (k-s) + i == s)
+                return {i,k-s};
+            }
+            
+        }
+        
+        return {0,0};
+    }
+};
