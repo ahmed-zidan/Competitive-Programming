@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findNumbers(vector<int>& nums) {
+        
+        int cnt = 0;
+        for(auto i : nums){
+            int c =0;
+            while(i != 0){
+                i /=10;
+                c++;
+            }
+            
+            if(c %2 == 0)
+                cnt++;
+            
+        }
+        
+        
+        return cnt;
+        
+    }
+};
