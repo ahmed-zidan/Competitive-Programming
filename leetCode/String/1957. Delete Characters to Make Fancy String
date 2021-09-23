@@ -1,0 +1,29 @@
+class Solution {
+public:
+    string makeFancyString(string s) {
+        int ch[30] = {0};
+        int p = 0;
+        string str = "";
+        
+        
+        for(auto i : s){
+            int x = i-'a';
+            if(ch[x]>1)
+                continue;
+            
+            else{
+                str+=i;
+                
+                if(x !=p)
+                    ch[p] = 0,p = x;
+                
+                ch[x]++;
+                
+            }
+            
+        }
+        
+        return str;
+        
+    }
+};
