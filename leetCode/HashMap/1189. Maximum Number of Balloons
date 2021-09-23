@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        int cnt[30] = {0};
+        
+        
+        for(auto i : text)
+            cnt[i-'a']++;
+        
+        
+        int a = 0;
+        int b = 1;
+        int l = 'l'-'a';
+        int o = 'o' -'a';
+        int n = 'n'-'a';
+        
+        int c = 0;
+        while(cnt[a] && cnt[b] && cnt[l] >1 && cnt[o]>1 && cnt[n]){
+            
+            cnt[a]--;
+            cnt[b]--;
+            cnt[l]-=2;
+            cnt[o]-=2;
+            cnt[n]--;
+            
+            c++;
+            
+        }
+        
+        return c;
+    }
+};
