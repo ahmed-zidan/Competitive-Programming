@@ -1,0 +1,84 @@
+class Solution {
+public:
+    void buildMap(string *m){
+       
+        int i = 1;
+        
+        m[i++] = "I";
+        m[i++] = "II";
+        m[i++] = "III";
+        m[i++] = "IV";
+        m[i++] = "V";
+        m[i++] = "VI";
+        m[i++] = "VII";
+        m[i++] = "VIII";
+        m[i++] = "IX";
+        i = 1;
+        int d = 10;
+        
+        m[(i++)*d] = "X";
+        m[(i++)*d] = "XX";
+        m[(i++)*d] = "XXX";
+        m[(i++)*d] = "XL";
+        m[(i++)*d] = "L";
+
+        m[(i++)*d] = "LX";
+        m[(i++)*d] = "LXX";
+        m[(i++)*d] = "LXXX";
+        m[(i++)*d] = "XC";
+        
+        i = 1;
+        d = 100;
+        m[(i++)*d] = "C";
+        m[(i++)*d] = "CC";
+        m[(i++)*d] = "CCC";
+        m[(i++)*d] = "CD";
+        m[(i++)*d] = "D";
+
+        m[(i++)*d] = "DC";
+        m[(i++)*d] = "DCC";
+        m[(i++)*d] = "DCCC";
+        m[(i++)*d] = "CM";
+        
+        i = 1;
+        d = 1000;
+        m[(i++)*d] = "M";
+        m[(i++)*d] = "MM";
+        m[(i++)*d] = "MMM";
+        
+    }
+    
+    
+    string intToRoman(int num) {
+        
+        
+        int arr[4];
+        int i = 0;
+        int c = 1;
+        
+        
+        string m[3001];
+        
+        buildMap(m);
+        
+        while(num != 0){
+            
+            arr[i++] = (num%10) * c;
+            c *=10;
+            num /= 10;
+        }
+            
+        
+        string s = "";
+        for(int x = 0;x<i;x++){
+            s =m[arr[x]]+s;
+        }
+        
+        
+        return s;
+        
+        
+        
+        
+    }
+};
