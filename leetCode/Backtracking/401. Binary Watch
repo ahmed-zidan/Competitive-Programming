@@ -1,0 +1,55 @@
+class Solution {
+public:
+    
+    
+    void take(vector<string>&v,int*arr,int i,int h,int min,int step,int ternedOn){
+        
+        
+        if(min > 59 || h > 11 || i>10){
+            
+            return;
+        }
+        
+        if(step == ternedOn){
+            
+            
+            
+            string s = to_string(h)+':';
+            if(min<10)
+                s += '0'+to_string(min);
+            else s += to_string(min);
+            
+            v.push_back(s);
+            return;
+        }
+            
+        
+        if(i<4){
+            
+            take(v,arr,i+1,h+arr[i],min,step+1,ternedOn);
+        }
+        else{
+            take(v,arr,i+1,h,min+arr[i],step+1,ternedOn);
+        }
+        
+        take(v,arr,i+1,h,min,step,ternedOn);
+        
+        
+    }
+    
+    
+    vector<string> readBinaryWatch(int turnedOn) {
+        
+        int arr[] = {1,2,4,8,1,2,4,8,16,32,100};
+        
+        
+        vector<string>v;
+        
+        take(v,arr,0,0,0,0,turnedOn);
+        
+        
+        return v;
+        
+        
+    }
+};
