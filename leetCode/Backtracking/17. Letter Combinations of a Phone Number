@@ -1,0 +1,49 @@
+class Solution {
+public:
+    
+    
+    void build(vector<string>&vs,vector<vector<char>>v,string d,string s,int i){
+        
+        if(i >= d.size()){
+        
+            vs.push_back(s);
+        return ;
+        }
+        
+        
+        int x = (d[i]-'0')-2;
+        
+        for(int j = 0;j<v[x].size();j++){
+            build(vs,v,d,s+v[x][j],i+1);
+            
+        }
+            
+    }
+    
+    vector<string> letterCombinations(string digits) {
+        
+        if(digits.empty())
+            return {};
+        
+        
+        vector<vector<char>>v(9);
+        v[0] = {'a','b','c'};
+        v[1] = {'d','e','f'};
+        v[2] = {'g','h','i'};
+        v[3] = {'j','k','l'};
+        v[4] = {'m','n','o'};
+        v[5] = {'p','q','r','s'};
+        v[6] = {'t','u','v'};
+        v[7] = {'w','x','y','z'};
+
+        
+        
+        vector<string>vs;
+        
+        
+        build(vs,v,digits,"",0);
+        
+        return vs;
+
+    }
+};
