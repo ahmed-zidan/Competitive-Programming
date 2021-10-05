@@ -1,0 +1,61 @@
+class Solution {
+public:
+    
+    map<string,bool>vis;
+    
+    bool valid(string s){
+        
+        stack<char>st;
+        for(auto i : s){
+            
+            if(i == '(')
+                st.push(i);
+            else{
+                if(st.empty())
+                    return false;
+                char k = st.top();
+                st.pop();
+                
+                if(k != '(')
+                    return false;
+                
+            }
+            
+        }
+        
+        return 1;
+        
+    }
+    
+    
+    void build(vector<string>&v,int op,int cl,string curr,int max){
+        
+        if(curr.size() == max){
+            v.push_back(curr);
+            return;
+        }
+            
+        if(op<max/2){
+            build(v,op+1,cl,curr+'(',max);
+        }
+        if(cl < op){
+            build(v,op,cl+1,curr+')',max);
+        }
+        
+        
+    }
+    
+    
+    vector<string> generateParenthesis(int n) {
+        
+        vector<string>v;
+        
+        build(v,0,0,"",n*2);
+        
+        
+        return v;
+        
+        
+        
+    }
+};
