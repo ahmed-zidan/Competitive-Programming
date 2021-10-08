@@ -1,0 +1,53 @@
+class Solution {
+public:
+    
+    
+    bool in(int i,int j,int r,int c){
+        return i>=0&&i<r&&j>=0&&j<c;
+    }
+    
+    
+    //map<string,bool>v;
+    
+    bool search(vector<vector<char>>& board,int i,int j,int cnt,string word){
+      
+        if(cnt >= word.size())
+            return true;
+        
+        if(!in(i,j,board.size(),board[0].size())||board[i][j] != word[cnt])
+            return false;
+        
+        char c = board[i][j];
+        
+        board[i][j] = '1';
+        
+        bool res =  search(board,i+1,j,cnt+1,word)||
+        
+        search(board,i-1,j,cnt+1,word)||
+        
+        search(board,i,j+1,cnt+1,word)||
+        
+        search(board,i,j-1,cnt+1,word);
+        
+    
+        
+        board[i][j] = c;
+        
+        return res;
+    }
+    
+    bool exist(vector<vector<char>>& board, string word) {
+        
+        string curr = "";
+        for(int i =0;i<board.size();i++){
+            for(int j = 0;j<board[0].size();j++){
+                if(search(board,i,j,0,word))
+                    return true;
+            }
+        }
+        
+        return 0;
+        
+        
+    }
+};
