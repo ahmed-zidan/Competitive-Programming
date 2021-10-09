@@ -1,0 +1,134 @@
+class Node{
+    
+    private : 
+    Node *links[26] = {};
+    bool end = 0;
+    string word;
+    
+    public :
+    
+    bool contain(char c){
+        return links[c-'a'] != NULL;
+        
+    }
+    void put(char c){
+        
+        links[c-'a'] = new Node();
+        
+        
+    }
+    
+    Node * getChar(char c){
+        return links[c-'a'];
+    }
+    
+    bool getEnd(){
+        return end;
+    }
+    
+    void setEnd(){
+        end = 1;
+    }
+    void setZ(){
+        end = 0;
+    }
+    
+    void setWord(string w){
+        word = w;
+    }
+    
+    
+    string getWord(){
+        return word;
+    }
+};
+
+
+class Solution {
+public:
+    
+    bool in(int i,int j,int r,int c){
+        return i>=0&&i<r&&j>=0&&j<c;
+    }
+    
+    
+    //map<string,bool>v;
+    
+    bool search(vector<vector<char>>&board,int i,int j,Node * curr,vector<string>&v){
+        
+        
+        if(!in(i,j,board.size(),board[0].size()) || board[i][j] == '1')
+            return 0;
+        
+        char c = board[i][j];
+       
+        
+        if(!curr->contain(c)){
+            
+            return 0;
+        }
+        
+        if(curr->getChar(c)->getEnd()){
+            v.push_back(curr->getChar(c)->getWord());
+            curr->getChar(c)->setZ();
+        }
+        
+        char x = board[i][j];
+        board[i][j] = '1';
+        
+        bool res = search(board,i+1,j,curr->getChar(c),v)||
+            search(board,i-1,j,curr->getChar(c),v)||
+            search(board,i,j+1,curr->getChar(c),v)||
+            search(board,i,j-1,curr->getChar(c),v);
+        
+        
+        board[i][j] = x;
+        return res;
+    }
+    
+    
+    
+    vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
+     
+
+        Node *root = new Node();
+        Node*t;
+        
+        for(auto str : words){
+            t = root;
+            for(auto c : str){
+                
+                
+                if(!t->contain(c))
+                    t->put(c);
+                
+                t = t->getChar(c);
+                
+            }
+            t->setEnd();
+            t->setWord(str);
+        }
+        
+        
+        
+        
+        
+        
+        
+        vector<string>v;
+        
+        
+        for(int i =0;i<board.size();i++){
+            for(int j =0;j<board[0].size();j++){
+        
+                search(board,i,j,root,v);
+            
+                
+            }
+        }
+               
+        return v;
+        
+        
+    }
+};
