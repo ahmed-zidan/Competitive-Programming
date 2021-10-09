@@ -1,0 +1,114 @@
+class Node{
+    private:
+    Node *links[26] = {};
+    
+    const int R = 26;
+    bool isEnd;
+    
+    
+    public :
+    
+    Node(){
+        
+        isEnd = 0;
+        
+        
+    }
+    
+    bool contain(char c){
+        return links[c-'a'] != NULL;
+        
+    }
+    
+    Node * get(char c){
+        
+        return links[c-'a'];
+        
+    }
+    
+    
+    void put(char c){
+        links[c-'a'] = new Node();
+    }
+    
+    void setEnd(){
+        isEnd = 1;
+    }
+    
+    bool getEnd(){
+        return isEnd;
+    }
+    
+};
+
+
+
+class Trie {
+
+    Node *root;
+    public:
+    Trie() {
+    
+        root = new Node();
+        
+    }
+    
+    void insert(string word) {
+    
+        Node * t = root;
+        
+        for(auto c : word){
+            
+            if(!t->contain(c)){
+                t->put(c);
+            }
+            
+            t = t->get(c);
+        }
+        
+        
+        t->setEnd();
+        
+    }
+    
+    Node * searchPrefix(string word) {
+    
+        Node * t = root;
+        
+        for(auto c : word){
+            if(t->contain(c)){
+           
+                t = t->get(c);
+                
+            }
+            else
+                return NULL;
+        }
+        
+        return t;
+    }
+    
+    
+    
+    bool search(string word) {
+        
+        Node * t = searchPrefix(word);
+        return t != NULL && t->getEnd();
+        
+        
+    }
+    
+    bool startsWith(string prefix) {
+        Node * t = searchPrefix(prefix);
+        return t != NULL;
+        
+    }
+};
+
+/**
+ * Your Trie object will be instantiated and called as such:
+ * Trie* obj = new Trie();
+ * obj->insert(word);
+ * bool param_2 = obj->search(word);
+ * bool param_3 = obj->startsWith(prefix);
+ */
