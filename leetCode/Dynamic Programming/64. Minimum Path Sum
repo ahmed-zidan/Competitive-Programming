@@ -1,0 +1,29 @@
+class Solution {
+public:
+    
+    int arr[201][201] = {};
+    
+    int paths(vector<vector<int>>& grid,int i ,int j){
+        
+        if(i >= grid.size() || j >= grid[0].size())
+            return 9999999;
+        
+        if(arr[i][j])
+            return arr[i][j];
+        
+        if(i == grid.size()-1 && j == grid[0].size()-1)
+            return grid[i][j];
+        
+        
+        
+        return arr[i][j] = min(paths(grid,i ,j+1) , paths(grid,i+1 ,j)) + grid[i][j];
+        
+    }
+    
+    int minPathSum(vector<vector<int>>& grid) {
+        
+        return paths(grid,0,0);   
+        
+        
+    }
+};
