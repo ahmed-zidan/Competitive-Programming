@@ -1,0 +1,47 @@
+class Solution {
+
+    int v[101][101];
+    public:
+    
+    
+    bool in(int i ,int j,int r,int c){
+        return i <r && j < c;
+    }
+    
+    int dfs(vector<vector<int>>& obstacleGrid , int i, int j){
+        
+    
+        if(!in(i , j ,obstacleGrid.size() , obstacleGrid[0].size()) || obstacleGrid[i][j] == 1)
+            return 0;
+    
+    
+        if(i == obstacleGrid.size()-1 && j == obstacleGrid[0].size()-1)
+            return 1;
+        
+        
+        if(v[i][j] != -1)
+            return v[i][j];
+        
+        
+        
+        int r = dfs(obstacleGrid ,i+1,j);
+        int d = dfs(obstacleGrid ,i,j+1);
+        
+        
+        return v[i][j] = r+d;
+        
+        
+    }
+    
+    int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
+    
+        
+        for(int i =0;i<101;i++){
+            for(int j =0;j<101;j++){
+                v[i][j] = -1;
+            }
+        }
+        
+        return dfs(obstacleGrid,0,0);
+    }
+};
