@@ -1,0 +1,71 @@
+class Solution {
+public:
+    
+    
+        
+    
+    bool in(int i,int j,int r,int c){
+        return i>=0 && i<r&&j>=0&&j<c;
+    }
+    
+    int v[21][21] = {};
+        
+    
+    int dfs(vector<vector<int>>& grid , int i,int j ,int k,int l, int free){
+        
+        if(!in(i,j,grid.size(),grid[0].size()) || grid[i][j] == -1 || v[i][j])
+            return 0;
+       
+        
+       // cout<<i<<" "<<j<<"   ";
+        
+        
+        if(i == k && j == l){
+         
+           // cout<<free<<endl;
+            return (free == 0)?1:0;
+        }
+       
+        v[i][j] = 1;
+        
+        free--;
+        
+        int le = dfs(grid ,i,j-1,k,l,free);
+        
+        int u = dfs(grid ,i-1,j,k,l,free);
+        
+        int d = dfs(grid ,i+1,j,k,l,free);
+        
+        int r = dfs(grid ,i,j+1,k,l,free);
+        
+        v[i][j]=0;
+        //free++;
+        return le+u+d+r;
+        
+    }
+    
+    
+    int uniquePathsIII(vector<vector<int>>& grid) {
+        
+        int free = 0;
+        int st , en,k,l;
+        for(int i = 0;i<grid.size();i++){
+            for(int j =0;j<grid[0].size();j++){
+            
+                if(grid[i][j] == 1)
+                    st = i,en = j,free++;
+                else if(grid[i][j] == 0)
+                    free++;
+                else if(grid[i][j] == 2)
+                    k = i,l = j;
+                
+            }
+        }
+        
+        
+        //cout<<free<<endl;
+        
+        return dfs(grid,st,en,k,l,free);
+        
+    }
+};
