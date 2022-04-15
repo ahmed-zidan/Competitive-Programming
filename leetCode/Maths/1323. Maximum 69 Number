@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maximum69Number (int num) {
+        int t = 0;
+        while(num!=0){
+            t = t*10+num%10;
+            num/=10;
+        }
+        int k = 1;
+        while(t!=0){
+            int md =  t%10;
+            if(md == 6&&k==1){
+                md = 9; k=0;
+                
+            }
+            num = num*10 + md;
+            t /=10;
+        }
+        
+        
+        return num;
+    }
+};
