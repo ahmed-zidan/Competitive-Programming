@@ -1,3 +1,6 @@
 select distinct(p1.email)
 from person p1 
-where p1.email in(select email from person where id <> p1.id)
+
+join person p2
+on p1.email = p2.email
+where p1.id <> p2.id
