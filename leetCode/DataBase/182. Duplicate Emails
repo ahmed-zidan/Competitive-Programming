@@ -1,0 +1,3 @@
+select distinct(p1.email)
+from person p1 
+where p1.email in(select email from person where id <> p1.id)
