@@ -1,0 +1,4 @@
+
+select name as Employee
+from Employee e1
+where e1.managerId in (select id from Employee e2 where e1.salary > e2.salary) 
