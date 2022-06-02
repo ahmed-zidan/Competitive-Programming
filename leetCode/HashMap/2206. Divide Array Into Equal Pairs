@@ -1,0 +1,18 @@
+class Solution(object):
+    def divideArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        
+        li = [0]*501
+        
+        for i in nums:
+            li[i]+=1
+        
+        for i in nums:
+            if(li[i] %2 !=0):
+                return False
+        
+        return True
+        
