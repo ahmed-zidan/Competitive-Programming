@@ -1,0 +1,35 @@
+class Solution(object):
+    def findDifference(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[List[int]]
+        """
+        
+        d1 = [False]*2002
+        d2 = [False] * 2002
+        for i in nums1:
+            d1[i] = 1
+        
+        for i in nums2:
+            d2[i] = 1
+            
+        res1 = set()
+        result = []
+        
+        for i in nums1:
+            if(not d2[i]):
+                res1.add(i)
+        result.append(res1)
+        
+        res1 = set()
+        
+        for i in nums2:
+            if(not d1[i]):
+                res1.add(i)
+        
+        result.append(res1)
+        return result
+            
+        
+        
