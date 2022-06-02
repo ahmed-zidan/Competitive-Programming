@@ -1,0 +1,33 @@
+class Solution(object):
+    def convertTime(self, current, correct):
+        """
+        :type current: str
+        :type correct: str
+        :rtype: int
+        """
+        
+        c1 = int(current[:2]) * 60 + int(current[3:])
+        c2 = int(correct[:2]) * 60 + int(correct[3:])
+        
+        # print(c1)
+        # print(c2)
+        
+        c = 0;
+        while(c1 < c2):
+            if(c1+60 <= c2):
+                c+=1
+                c1+=60
+            elif(c1+15 <= c2):
+                c+=1; c1+=15
+            elif(c1+5 <= c2):
+                c+=1; c1+=5
+            else:
+                c+=1; c1+=1
+                
+        return c
+        
+         
+        
+        
+        
+        
