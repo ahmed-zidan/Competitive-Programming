@@ -1,0 +1,20 @@
+class Solution(object):
+    def findLucky(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
+        
+        x = [0]*501
+        for i in arr:
+            x[i] += 1
+            
+        m = -1
+        
+        for i in arr:
+            if(i == x[i] ):
+                m = max(m , i)
+                
+        return m
+            
+        
