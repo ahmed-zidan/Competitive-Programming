@@ -1,0 +1,21 @@
+class Solution(object):
+    def lastStoneWeight(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: int
+        """
+        
+        
+        while(len(stones) > 1):
+            
+            stones.sort()
+            
+            tem = stones[:-2]
+            
+            n = stones[-1] - stones[-2]
+            if(n!= 0):
+                tem.append(n)
+            stones = tem
+            
+        return stones[0] if len(stones)==1 else 0
+             
