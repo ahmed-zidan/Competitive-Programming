@@ -1,0 +1,3 @@
+select s.actor_id , s.director_id
+from (select actor_id  , director_id , count(director_id) from ActorDirector
+                  group by actor_id , director_id  having count(director_id) >=3) s
