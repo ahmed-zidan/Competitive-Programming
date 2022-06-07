@@ -1,0 +1,14 @@
+class Solution(object):
+    def countOdds(self, low, high):
+        """
+        :type low: int
+        :type high: int
+        :rtype: int
+        """
+        
+        c = high-low+1
+        if(low%2 == 1 and high%2 == 1):
+            return (c/2)+1
+            
+        
+        else: return (c/2)
