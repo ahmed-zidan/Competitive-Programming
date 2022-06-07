@@ -1,0 +1,13 @@
+class Solution(object):
+    def average(self, salary):
+        """
+        :type salary: List[int]
+        :rtype: float
+        """
+        
+        salary.sort()
+        av = 0.0
+        for i in range(1,len(salary)-1):
+            av +=salary[i]
+        
+        return av/(len(salary)-2)
