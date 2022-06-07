@@ -1,0 +1,18 @@
+class Solution(object):
+    def findOcurrences(self, text, first, second):
+        """
+        :type text: str
+        :type first: str
+        :type second: str
+        :rtype: List[str]
+        """
+        
+        li = text.split(" ")
+        l = []
+        for i in range(len(li)-2):
+            if(li[i] == first and li[i+1] == second):
+                l.append(li[i+2])
+                
+                
+        return l
+        
