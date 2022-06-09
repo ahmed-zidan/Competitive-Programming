@@ -1,0 +1,24 @@
+class Solution(object):
+    def nearestValidPoint(self, x, y, points):
+        """
+        :type x: int
+        :type y: int
+        :type points: List[List[int]]
+        :rtype: int
+        """
+        
+        sm = 99999
+        idx = -1
+        for j,i in enumerate(points):
+            if(i[0] == x or i[1] == y):
+               
+                if sm > (abs(x - i[0]) + abs(y - i[1])):
+                    
+                    sm = (abs(x - i[0]) + abs(y - i[1]))
+                    
+                    idx = j
+                    
+                
+        
+        return idx
+        
