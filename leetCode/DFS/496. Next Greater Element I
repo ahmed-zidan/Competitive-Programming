@@ -1,0 +1,26 @@
+class Solution(object):
+    def nextGreaterElement(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        m = {}
+        for j in range(len(nums2)):
+            for k in range(j+1 , len(nums2)):
+                
+                if(nums2[j] < nums2[k]):
+                    m[nums2[j]] = nums2[k]
+                    break
+        
+        arr = []
+        for i in nums1:
+            if(i in m):
+                arr.append(m[i])
+            else: arr.append(-1)
+            
+        return arr
+                
+                        
+                    
+        
