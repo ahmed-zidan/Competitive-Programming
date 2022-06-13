@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int maximumWealth(vector<vector<int>>& accounts) {
+        
+        int m = 0;
+        for(vector<int> i : accounts){
+            int x = 0;
+            for(int j : i)
+                x+=j;
+            m = max(m , x);
+        }
+        
+        return m;
+        
+        
+    }
+};
