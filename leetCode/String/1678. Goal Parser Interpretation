@@ -1,0 +1,23 @@
+class Solution(object):
+    def interpret(self, command):
+        """
+        :type command: str
+        :rtype: str
+        """
+        
+        c = ""
+        i = 0
+        while(i < len(command)):
+            if command[i] == 'G':
+                c+='G'
+                i+=1
+            elif command[i+1]=='a':
+                c+='al'
+                i+=4
+            else:
+                c+='o'
+                i+=2
+        
+        return c
+                
+        
