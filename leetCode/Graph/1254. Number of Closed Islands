@@ -1,0 +1,32 @@
+class Solution(object):
+    def closedIsland(self, grid):
+        """
+        :type grid: List[List[int]]
+        :rtype: int
+        """
+        
+        r , c = len(grid) , len(grid[0]);
+        
+        def cldIsland(i , j):
+            if(i < 0 or j < 0 or i >= r or j >= c):
+                return False
+            
+            
+            
+            if(grid[i][j] == 1):
+                return True
+            
+            grid[i][j] = 1
+            return cldIsland(i+1,j) & cldIsland(i-1 , j) & cldIsland(i , j+1) & cldIsland(i , j-1)
+        
+        x = 0
+        
+        for i , k in enumerate(grid):
+            for j , m in enumerate(k):
+                if m == 0 and cldIsland(i , j):
+                    
+                    x += 1
+        
+        return x;
+            
+        
