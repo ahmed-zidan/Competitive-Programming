@@ -1,0 +1,10 @@
+/* Write your T-SQL query statement below */
+
+
+select day ,  emp_id , sum(total_time) total_time
+from (select event_day as day , emp_id , out_time - in_time total_time
+from Employees) t
+
+group by day , emp_id
+
+
