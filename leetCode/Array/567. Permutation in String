@@ -1,0 +1,39 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        
+        int arr1[140] = {0};
+        int arr2[140] = {0};
+        for(char c : s1){
+            arr1[c]++;
+            arr2[c]++;
+        }
+        
+        
+        for(int i =0;i<s2.size();i++){
+            int c =0;
+            for(int j =i;j<s1.size()+i && j <s2.size() ;j++){
+                int x = s2[j];
+                
+                if(arr1[x]){
+                    c++;
+                    arr1[x]--;
+                }
+            }
+            
+            if(c == s1.size())
+                return true;
+            
+            if(c >0)
+                for(int j =0;j<140;j++){
+                arr1[j] = arr2[j];
+            }
+            
+            
+        }
+        
+        return false;
+        
+        
+    }
+};
