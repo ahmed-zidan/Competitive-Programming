@@ -1,0 +1,23 @@
+class Solution(object):
+    def sortByBits(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: List[int]
+        """
+        arr.sort()
+        d = {}
+        for i in arr:
+            x = bin(i).count('1')
+            if x not in d:
+                d[x] = [i]
+            else: d[x].append(i)
+        
+        
+        res = []
+        for i in sorted(d.keys()):
+                
+                res.extend(d[i])
+        
+        return res
+            
+        
