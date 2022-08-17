@@ -1,0 +1,32 @@
+class Solution {
+public:
+    
+    int v[101][101] = {};
+    int go(int i , int j , int m , int n){
+        
+        if(i >= m || j>=n)
+            return 0;
+        
+        if(i == m-1 && j == n-1){
+            return 1;
+        }
+        //cout<<i<<j<<endl;
+        if(v[i][j] != 0)
+            return v[i][j];
+         
+        v[i][j] = 1;
+        
+        int i1 = go(i , j+1 ,m ,n);
+        int i2 = go(i+1 , j ,m ,n);
+        
+        
+        return v[i][j] = i1 + i2;
+        
+        
+    }
+    
+    
+    int uniquePaths(int m, int n) {
+        return go(0 ,0 ,m ,n);
+    }
+};
