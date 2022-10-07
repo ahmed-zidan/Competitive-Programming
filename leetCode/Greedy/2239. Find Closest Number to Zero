@@ -1,0 +1,17 @@
+public class Solution {
+    public int FindClosestNumber(int[] nums) {
+        
+        int c = 999999;
+        foreach(var x in nums){
+            c = Math.Min(c , Math.Abs(x));
+        }
+        
+        foreach(var x in nums){
+            if(c == x)
+                return c;
+        }
+        
+        return -c;
+        
+    }
+}
