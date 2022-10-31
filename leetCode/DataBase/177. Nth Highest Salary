@@ -1,0 +1,22 @@
+CREATE FUNCTION getNthHighestSalary(@N INT) RETURNS INT AS
+BEGIN
+    RETURN (
+        /* Write your T-SQL query statement below. */
+        
+       SELECT
+    salary
+FROM
+    (
+        SELECT
+            ROW_NUMBER () OVER (ORDER BY salary desc) AS RowNum,
+            salary
+        FROM
+            Employee
+        group by salary
+    ) sub
+WHERE
+    RowNum = @N
+        
+        
+    );
+END
