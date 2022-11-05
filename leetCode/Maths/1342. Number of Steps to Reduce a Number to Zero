@@ -1,0 +1,11 @@
+public class Solution {
+    public int NumberOfSteps(int num) {
+        if(num == 0){
+            return 0;
+        }
+
+        return 1+(num%2==0 ? NumberOfSteps(num/2) : NumberOfSteps(num-1));
+
+
+    }
+}
