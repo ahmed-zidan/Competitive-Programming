@@ -1,0 +1,46 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+ 
+ 
+int main() {
+ 
+ 
+	int n;
+	cin >> n;
+	
+	int min = INT_MAX;
+	int Pmin = 0;
+	int max = INT_MIN;
+	int Pmax = 0;
+	int i = 0;
+	while (n--)
+	{
+		int x;
+		cin >> x;
+		if (x <= min) {
+			min = x;
+			Pmin = i;
+		}
+		if (x > max) {
+			max = x;
+			Pmax = i;
+		}
+		i++;
+	}
+ 
+	
+	int res = Pmax + (i - Pmin - 1);
+ 
+	if (Pmax > Pmin) {
+		
+		cout << res-1 << endl;
+	}
+	else
+	{
+		cout << res << endl;
+	}
+ 
+	return 0;
+ 
+}
