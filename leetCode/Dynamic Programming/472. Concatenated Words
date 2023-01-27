@@ -1,0 +1,32 @@
+class Solution {
+public:
+    map<string,bool> m;
+    vector<string> findAllConcatenatedWordsInADict(vector<string>& words) {
+        for(int i =0;i<words.size();i++){
+            m[words[i]] = true;
+        }
+
+        vector<string>v;
+        for(int i =0;i<words.size();i++){
+            if(isConcat(words[i]))
+                v.push_back(words[i]);
+        }
+
+
+    return v;
+
+    }
+
+    bool isConcat(string word){
+        for(int i =0;i<word.size();i++){
+            string suffix = word.substr(i);
+            if(m[word.substr(0,i)] && (m[suffix] || isConcat(suffix))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+};
