@@ -1,0 +1,28 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+ 
+ 
+int main() {
+ 
+	int x;
+	cin >> x;
+	vector<int>v;
+	for (int i = 0; i < x; i++) {
+		int y;
+		cin >> y;
+ 
+		v.push_back(y);
+	}
+ 
+	double s = 0;
+	for (int i = 0; i < x; i++) {
+		s += (v[i] / 100.0);
+	}
+ 
+ 
+	cout << (s / x) * 100;
+ 
+	return 0;
+ 
+}
