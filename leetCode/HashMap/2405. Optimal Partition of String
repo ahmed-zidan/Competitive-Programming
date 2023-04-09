@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int partitionString(string s) {
+        
+        int i = 0;
+        int sum = 0;
+        while(i < s.size()){
+
+            bool arr[50] = {0};
+             sum++;
+            while(i < s.size() && !arr[s[i] - 'a']){
+                arr[s[i] - 'a'] = 1;
+                i++;
+            }
+           
+
+        }
+
+        return sum;
+
+
+    }
+};
