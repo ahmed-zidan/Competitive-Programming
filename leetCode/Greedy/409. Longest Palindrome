@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        int cnt =0;
+        bool v[200] = {0};
+        for(auto i : s){
+           cnt += v[i]*2;
+           v[i] = !v[i];
+        }
+       
+        return (s.size()-cnt > 0) ? 1 + cnt :cnt ;
+
+    }
+};
