@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isNStraightHand(vector<int>& hand, int groupSize) {
+        if (hand.size() % groupSize != 0) {
+            return false;
+        }
+        map<int,int>m;
+        for(auto i : hand){
+            m[i]++;
+        }
+
+        while(!m.empty()){
+            int minCard = m.begin()->first;
+            for(int i =0;i<groupSize;i++){
+                if(m[minCard+i] == 0){
+                    return false;
+                }
+                m[minCard+i]--;
+                if(m[minCard+i] < 1){
+                    m.erase(minCard+i);
+                }
+            }
+        }
+
+        return true;
+        
+    }
+};
