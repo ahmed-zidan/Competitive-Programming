@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minDifference(vector<int>& nums) {
+        if(nums.size()<=4){
+            return 0;
+        }
+        sort(nums.begin(),nums.end());
+        int n = nums.size()-1;
+        int res1 =nums[n] - nums[3];
+        
+        int res2=nums[n-3] - nums[0] ;
+        int res3= nums[n-2] - nums[1];
+        int res4=  nums[n-1]-nums[2];
+        int m = min(res1 , min(res2,min(res3,res4)));
+        cout<<res1<<endl;
+        cout<<res2<<endl;
+        cout<<res3<<endl;
+        cout<<res4<<endl;
+        return m;
+        
+    }
+};
+
+
+
+//0 1 5 10 14
