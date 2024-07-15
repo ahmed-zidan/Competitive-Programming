@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int numWaterBottles(int numBottles, int numExchange) {
+        int cnt = 0;
+        int drink = numBottles;
+        int total = numBottles;
+        int rem = 0;
+        while(drink > 0){
+            cnt += drink;
+            drink = total/numExchange;
+            total = drink+(total%numExchange);
+        }
+
+        return cnt;
+    }
+};
