@@ -1,0 +1,53 @@
+class Solution {
+public:
+    
+    
+    bool is_prime(int n){
+        if(n == 1 || n ==0 )
+            return 0;
+        for(int i = 2;i<=sqrt(n);i++)
+            if(n%i == 0)
+                return false;
+        
+        return true;
+    }
+    
+    
+    int numPrimeArrangements(int n) {
+        
+        vector<int>p(n+1,0);
+        
+        int prime = 0;
+        int notPrime = 0;
+        
+        while(n){
+            if(is_prime(n)){
+                prime++;
+                p[n] = 1;
+            }
+            else notPrime++;
+            n--;
+        }
+        
+        
+        cout<<prime<<"  "<<notPrime;
+        
+        
+        long long int res = 1;
+        for(int i =1;i<p.size();i++){
+            if(p[i]){
+                
+                res =(res*prime--)%(1000000000 + 7) ;
+                
+            }
+            else{
+                res = (res *notPrime--) % (1000000000 + 7);
+            }
+            
+            
+        }
+        
+        return res;
+        
+    }
+};
