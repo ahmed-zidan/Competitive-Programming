@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int findGCD(vector<int>& nums) {
+        int s = nums[0], m = nums[0];
+        for(auto i : nums){
+            s = min(s, i);
+            m = max(m , i);
+        }
+
+        int i = s;
+        while(i > 0){
+            if(s%i == 0 && m%i == 0)
+                return i;
+            i--;
+        }
+        return 1;
+    }
+
+};
