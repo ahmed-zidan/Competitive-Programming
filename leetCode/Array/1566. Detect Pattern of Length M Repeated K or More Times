@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool containsPattern(vector<int>& arr, int m, int k) {
+        if(arr.size() < m*k){
+            return false;
+        }
+        int i = 0;
+        while(i+m < arr.size()){
+          int cnt = 0;
+          int s = 0;
+          int minW = i, maxW = i+(m*k);
+          for(int x = i;x<maxW;x++){
+            bool f = false;
+            for(int n = x;n+m<maxW;n++){
+                if(arr[n] != arr[n+m]){
+                    f  = true;
+                    break;
+                }
+            }
+            if(f)
+                break;
+            s++;
+          }
+          
+          if(s >= k)
+            return true;
+        
+            i++;
+        }
+
+        return false;
+    }
+};
+
+
