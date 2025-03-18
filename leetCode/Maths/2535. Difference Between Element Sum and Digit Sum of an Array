@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int differenceOfSum(vector<int>& nums) {
+        int s = 0 , sd = 0;
+        for(auto i : nums){
+            int x = i;
+            while(x!= 0){
+                sd += x%10;
+                x = x/10;
+            }
+            s += i;
+        }
+        return abs(s - sd);
+    }
+};
