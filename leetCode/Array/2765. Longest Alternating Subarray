@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int alternatingSubarray(vector<int>& nums) {
+        int s = -1;
+        int i =1;
+        int val = 1;
+        while(i < nums.size()){
+            int x = -1;
+            while(i < nums.size()&& nums[i]-nums[i-1] == val){
+                val = val*-1;
+                i++;
+                x++;
+            }
+            s = max(x , s);
+            //cout<<"-----"<<i<<endl;
+            //cout<<x<<endl;
+            if(i == nums.size()){
+                
+                break;
+            }
+           else if(x>-1){
+            i = i;
+           }else{
+            i++;
+           }
+            val = 1;
+        }
+        return s == -1? s:s+2;
+    }
+};
