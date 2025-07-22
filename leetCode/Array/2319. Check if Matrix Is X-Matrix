@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool checkXMatrix(vector<vector<int>>& grid) {
+        int l =0;int row =0;int r = grid.size()-1;
+        //cout<<grid.size()-1<<endl;
+        while(row <= grid.size()-1){
+           if(grid[row][l] == 0 || grid[row][r]==0){
+                return false;
+           }
+           for(int k = 0;k<grid.size();k++){ 
+                if(grid[row][k] > 0 && k != l && k != r)
+                    return false;
+           }
+       
+           row++;
+           l++;
+           r--; 
+        }
+
+
+
+        return true;
+    }
+};
