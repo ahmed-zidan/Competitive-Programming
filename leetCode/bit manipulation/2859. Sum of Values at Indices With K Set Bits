@@ -1,0 +1,22 @@
+class Solution {
+public:
+
+    int cnt(int n){
+        int cnt =0;
+        while(n > 0){
+            n = n & (n-1);
+            cnt++;
+        }
+        return cnt;
+    }
+
+    int sumIndicesWithKSetBits(vector<int>& nums, int k) {
+        int sm =0;
+        for(int i =0;i<nums.size();i++){
+            int c = cnt(i);
+            
+            sm += (c == k) ? nums[i] : 0;
+        }
+        return sm;
+    }
+};
