@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int minOperations(vector<int>& nums) {
+        int s = 0;
+        int pr = nums[0];
+        for(int i=1;i<nums.size();i++){
+            if(nums[i] <=pr){
+                pr = pr+1;
+                s += pr-nums[i];
+            }else{
+                pr= nums[i];
+            }
+        }
+        return s;
+    }
+};
+        
