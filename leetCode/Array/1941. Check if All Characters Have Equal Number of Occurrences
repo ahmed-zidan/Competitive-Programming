@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool areOccurrencesEqual(string s) {
+        int c[200] = {0};
+        for(auto i : s){
+            c[i]++;
+        }
+        int x = c[s[0]];
+        for(auto i : s){
+            if(c[i] != x) return false;
+        }
+        return true;
+        
+    }
+};
