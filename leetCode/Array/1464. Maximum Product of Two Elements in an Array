@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int mx1 = 0 , i =0;
+        int mx2 = 0;
+        for(int k = 0;k<nums.size();k++){
+            if(mx1 < nums[k])
+            mx1 = nums[k] ,i = k ;
+        }
+
+        for(int k = 0;k<nums.size();k++){
+            if(mx2 < nums[k] && k != i)
+                mx2 = nums[k];
+        }
+
+        return (mx1-1) * (mx2 - 1);
+
+
+
+
+    }
+};
