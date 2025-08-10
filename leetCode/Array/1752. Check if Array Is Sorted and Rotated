@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool check(vector<int>& nums) {
+        int i =0;
+        
+        while(i+1 < nums.size() &&nums[i] <= nums[i+1]){
+            i++;
+        }
+       
+        i++;
+        //cout<<i<<endl;
+        while(i+1 < nums.size() && nums[i] <= nums[i+1] && nums[i] <= nums[0]){
+            i++;
+        }
+        if(i < nums.size()&&nums[i] > nums[0]){
+            return false;
+        }
+        i++;
+
+        return i >= nums.size()? true:false;
+
+    }
+};
