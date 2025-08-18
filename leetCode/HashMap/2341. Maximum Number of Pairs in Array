@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> numberOfPairs(vector<int>& nums) {
+        int arr[101] = {0};
+        for(auto i : nums){
+            arr[i]++;
+        }
+        int cnt =0;
+        int l =0;
+        for(int i =0;i<101;i++){
+            cnt += arr[i]/2;
+            l += arr[i]%2;
+        }
+
+        return {cnt ,l };
+    }
+};
