@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int countPrefixSuffixPairs(vector<string>& words) {
+        int cnt = 0;
+        for(int i= 0;i<words.size();i++){
+            int s = words[i].size();
+           // cout<<words[i]<<endl;;
+            for(int j = i+1;j<words.size();j++){
+                //cout<<"----"<<words[j]<<endl;
+                if(words[j].size() >= s){
+                    int k = 0;
+                    bool t = true;
+                    while(k < s){
+                        //cout<<words[i][k]<<words[j][k]<<" ";
+                        if(words[i][k] !=words[j][k]){
+                            t = false;
+                            break;
+                        }
+                        k++;
+                    }
+                    //cout<<endl;
+                    if(!t){
+                        continue;
+                    }
+                   
+                    k = s-1;
+                    int m = words[j].size()-1;
+                    while(k >=0){
+                        if(words[i][k] !=words[j][m]){
+                            t = false;
+                            break;
+                        }
+                        k--;
+                        m--;
+                    }
+                    
+                    if(t){
+                        cnt++;
+                    }
+                }
+            }
+        }
+        return cnt;
+    }
+};
