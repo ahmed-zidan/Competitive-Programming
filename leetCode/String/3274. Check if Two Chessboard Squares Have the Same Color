@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool coloer(string coordinate){
+        if((coordinate[1]-'0')%2 == 0){
+            if((coordinate[0]-'a')%2 == 0){
+                return true; //white
+            }else{
+                return false;//black
+            }
+        }else{
+            if((coordinate[0]-'a')%2 == 0){
+                return false; 
+            }else{
+                return true;
+            }
+        }
+    }
+    bool checkTwoChessboards(string coordinate1, string coordinate2) {
+        cout<<coloer(coordinate1)<<"     "<<coloer(coordinate2)<<endl;
+        return coloer(coordinate1)==coloer(coordinate2);
+    }
+};
