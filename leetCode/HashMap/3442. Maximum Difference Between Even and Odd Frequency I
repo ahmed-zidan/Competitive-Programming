@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maxDifference(string s) {
+        int odd[50] = {0};
+       
+        for(auto i : s){
+            int x = i-'a';
+            odd[x]++;
+           
+        }    
+
+        int mxOdd = 0, mnEven = 200;  
+       
+        for(int i = 0;i<50;i++){
+            if(odd[i]>0 && odd[i]%2==0){
+                mnEven = min(mnEven , odd[i]);
+            }
+           else if(odd[i] >0){
+                mxOdd = max(mxOdd , odd[i]);
+           }
+        }
+        
+        return mxOdd - mnEven; 
+        
+    }
+};
