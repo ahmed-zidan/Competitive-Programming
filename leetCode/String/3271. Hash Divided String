@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string stringHash(string s, int k) {
+        string res = "";
+        int i = 0;
+        while(i < s.size()){
+            int hashSome = 0;
+            int j =0;
+            while(i<s.size() && j<k){
+                hashSome += s[i]-'a';
+                i++;
+                j++;
+            }
+            char x = 'a'+(hashSome%26);
+            res += x;
+           
+        }
+        return res;
+    }
+};
