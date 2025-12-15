@@ -1,0 +1,38 @@
+
+
+class Solution {
+public:
+    string reverseParentheses(string s) {
+      int n = s.size();
+      stack<int>openPer;
+      vector<int>p(n);
+      for(int i =0;i<n;i++){
+        if(s[i] == '('){
+            openPer.push(i);
+        }else if(s[i] == ')'){
+            int x = openPer.top();
+            openPer.pop();
+            p[i] = x;
+            p[x] = i;
+        }
+      }
+     int dir = 1;
+     int currIdx = 0;
+     string res = "";
+     while(currIdx < n){
+        if(s[currIdx] =='(' ||s[currIdx] ==')'  ){
+            dir = -dir;
+            currIdx = p[currIdx];
+        }else{
+            res += s[currIdx];
+        }
+
+        currIdx += dir;
+     }
+
+    return res;
+
+
+
+    }
+};
