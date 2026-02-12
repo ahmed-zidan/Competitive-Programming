@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> evenOddBit(int n) {
+        vector<int>v(2 , 0);
+        bool ev = false;
+        while(n > 0){
+            v[ev] += (n&1);
+            n >>=1;
+            ev = !ev;
+        }
+
+        return v;
+    }
+};
