@@ -1,0 +1,61 @@
+class Solution {
+public:
+
+    static bool sortFunc(const vector<int>& l, const vector<int>& r) {
+    if (l[1] == r[1])
+        return l[3] < r[3];
+    return l[1] < r[1];
+    }
+
+    bool checkValidCuts(int n, vector<vector<int>>& rectangles) {
+        sort(rectangles.begin() , rectangles.end() , sortFunc);
+        int nCuts = 0;
+        int peek = 0;
+        for(int i =0;i<rectangles.size()-1;i++){
+            vector<int> rec1 = rectangles[i];
+            vector<int> rec2 = rectangles[i+1];
+            peek = max(peek , rec1[3]);
+            if(rec2[1] >= peek) nCuts++;
+        }
+
+        
+// for(auto i : rectangles){
+//             cout<<i[1] << ' '<<i[3]<< '<';
+//         }
+
+        if(nCuts > 1) return true;
+
+        sort(rectangles.begin() , rectangles.end() , [](const vector<int>& l, const vector<int>& r) {
+            if (l[0] == r[0])
+                return l[2] < r[2];   // tie-breaker
+            return l[0] < r[0];
+        });
+        //cout<<11111111111111111<<endl;
+        nCuts = 0;
+        peek = 0;
+        for(int i =0;i<rectangles.size()-1;i++){
+            auto rec1 = rectangles[i];
+            auto rec2 = rectangles[i+1];
+            peek = max(peek , rec1[2]);
+            if(rec2[0] >= peek) nCuts++;
+        }
+
+        
+// for(auto i : rectangles){
+//             cout<<i[0] << ' '<<i[2]<< '<';
+//         }
+        if(nCuts > 1) return true;
+
+
+
+        return false;
+    }
+};
+
+
+//(0 2)   (2 4)   (2 3)  (4 5)
+
+//(0,3) (0,3) (0,3) (0,4)  (3,4)
+
+//(0,1) (1,2) (1,4) (2,3) (3,4)
+ 
